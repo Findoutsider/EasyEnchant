@@ -1,0 +1,7 @@
+messages:
+  noItemInHand: "你手中没有物品可以附魔！"
+  invalidEnchantment: "无效的附魔"
+  failedToEnchant_getMeta: "无法获取物品元数据！"
+  failedToEnchant_errorLevel: "附魔等级错误，正确等级应为"
+  clearEnchantment: "已清除附魔"
+  successEnchant: "物品已成功附魔"

@@ -1,0 +1,16 @@
+name: EasyEnchant
+version: '1.0-SNAPSHOT'
+main: com.easyEnchant.EasyEnchant
+api-version: 1.13
+folia-supported: true
+commands:
+  easyenchant:
+    permission: easyenchant.command
+    permission-message: '&cYou do not have permission to use this command.'
+    aliases:
+      - ee
+
+permissions:
+  easyenchant.command:
+    description: 'Allows the player to use the /easyenchant command.'
+    default: op
