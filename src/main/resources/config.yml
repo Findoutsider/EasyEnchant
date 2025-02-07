@@ -5,3 +5,4 @@ messages:
   failedToEnchant_errorLevel: "附魔等级错误，正确等级应为"
   clearEnchantment: "已清除附魔"
   successEnchant: "物品已成功附魔"
+

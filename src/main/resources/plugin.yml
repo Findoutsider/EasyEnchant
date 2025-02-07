@@ -14,3 +14,4 @@ permissions:
   easyenchant.command:
     description: 'Allows the player to use the /easyenchant command.'
     default: op
+
