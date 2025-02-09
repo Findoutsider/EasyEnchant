@@ -20,7 +20,7 @@ import java.util.List;
 
 public final class EasyEnchant extends JavaPlugin {
 
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.0.1";
     public static EasyEnchant instance;
     public static LoggerUtils log;
     public static List<String> ENCHANTMENTS = new ArrayList<>();
@@ -45,6 +45,8 @@ public final class EasyEnchant extends JavaPlugin {
         config = getConfig();
 
         log.info("EasyEnchant 已加载");
+
+        checkForUpdates();
 
     }
 
@@ -80,7 +82,7 @@ public final class EasyEnchant extends JavaPlugin {
     }
 
     private void checkForUpdates() {
-        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+        new Thread(() -> {
             try {
                 URL url = new URL("https://api.github.com/repos/Findoutsider/EasyEnchant/releases/latest");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -100,7 +102,6 @@ public final class EasyEnchant extends JavaPlugin {
                         }
                         for (Player player : Bukkit.getOnlinePlayers()) {
                             if (player.isOp()) {
-
                                 player.sendMessage("§8[§bDeathPunish§8] §r" + configGetString("update_available1")
                                         + " §a" + latestVersion
                                         + configGetString("update_available2"));
@@ -120,8 +121,9 @@ public final class EasyEnchant extends JavaPlugin {
                 log.err(configGetString("update_exception") + e.getMessage());
                 e.printStackTrace();
             }
-        });
+        }).start();
     }
+
 
     private static JSONObject getJsonObject(HttpURLConnection connection) throws IOException, org.json.simple.parser.ParseException {
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
