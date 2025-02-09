@@ -6,3 +6,9 @@ messages:
   clearEnchantment: "已清除附魔"
   successEnchant: "物品已成功附魔"
 
+update_available1: "发现新版本: "
+update_available2: "，请前往 https://github.com/Findoutsider/EasyEnchant 查看"
+update_info: "新版本信息: "
+current_version: "当前版本已是最新: v"
+update_error: "获取新版本失败: "
+update_exception: "获取新版本时发生异常: "

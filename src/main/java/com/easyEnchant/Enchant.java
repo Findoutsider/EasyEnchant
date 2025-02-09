@@ -26,19 +26,12 @@ public class Enchant {
             player.sendMessage("§c" + configGetString("messages.failedToEnchant_getMeta"));
             return;
         }
-        log.info(String.valueOf(level));
         if (level == 0) {
-            log.info("1");
-            log.info(String.valueOf(enchantment));
             if (meta.hasEnchant(enchantment)) {
-                log.info(String.valueOf(enchantment));
-                log.info(String.valueOf(meta));
                 meta.removeEnchant(enchantment);
                 item.setItemMeta(meta);
-                log.info(String.valueOf(meta));
                 player.sendMessage("§a" + configGetString("messages.clearEnchantment") + ":§a " + enchantmentName);
             } else {
-                log.info("2");
                 player.sendMessage("§c" + configGetString("messages.failedToEnchant_errorLevel")
                         + ":§a " + enchantment.getStartLevel() + " - " + 32767);
             }

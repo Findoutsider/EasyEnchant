@@ -19,7 +19,7 @@ public class Commands implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command,  String s,  String[] args) {
-        if (((sender instanceof Player && sender.hasPermission("easyenchant.use")) || sender instanceof ConsoleCommandSender)
+        if (((sender instanceof Player && sender.hasPermission("easyenchant.command")) || sender instanceof ConsoleCommandSender)
                 && s.equalsIgnoreCase("easyenchant") || s.equalsIgnoreCase("ee")) {
             if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("reload")) {
@@ -45,6 +45,7 @@ public class Commands implements CommandExecutor, TabCompleter {
                     for (Enchantment enchantment : Registry.ENCHANTMENT) {
                         if (enchantment.getKey().getKey().equalsIgnoreCase(args[0])) {
                                 Enchant.enchant((Player) sender, ((Player) sender).getInventory().getItemInMainHand(), Integer.parseInt(args[1]), args[0]);
+                                return true;
                         }
                     }
                 }
@@ -85,7 +86,10 @@ public class Commands implements CommandExecutor, TabCompleter {
     public void help(CommandSender sender) {
         sender.sendMessage("§a[EasyEnchant]");
         sender.sendMessage("§7/ee <enchantment> <level> <player>");
-        sender.sendMessage("§7/ee <enchantment> <level>");
+        if (sender instanceof Player) {
+            sender.sendMessage("§7/ee <enchantment> <level>");
+        }
+
         sender.sendMessage("§7/ee help");
         sender.sendMessage("§7/ee reload");
     }
